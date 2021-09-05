@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react'
+import styled from 'styled-components'
+// Components
+import Main from './views/main/index'
+import Header from './components/uikit/Header'
+// Utils
+import { vkInit } from './utils/api'
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    vkInit()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Container>
+      <Header />
+      <Main />
+    </Container>
+  )
 }
 
-export default App;
+const Container = styled.div`
+  margin: 0 196px;
+`
+
+export default App
+
